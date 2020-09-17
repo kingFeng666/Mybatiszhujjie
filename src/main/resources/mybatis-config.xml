@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"></properties>
+    <settings>
+        <!--开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <typeAliases>
+        <typeAlias type="com.shangguan.Mybatis.beans.School" alias="School"></typeAlias>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.Driver}"/>
+                <property name="url" value="${jdbc.Url}"/>
+                <property name="username" value="${jdbc.UserName}"/>
+                <property name="password" value="${jdbc.Password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+       <!-- <package name="com.shangguan.mybatis.dao"/>-->
+        <package name="com.shangguan.Mybatis.mapper"/>
+    </mappers>
+</configuration>

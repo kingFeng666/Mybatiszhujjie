@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shangguan.Mybatis.mapper.SchoolMapper">
+  <resultMap id="BaseResultMap" type="com.shangguan.Mybatis.beans.School">
+    <!--@mbg.generated-->
+    <id column="sid" jdbcType="INTEGER" property="sId" />
+    <result column="sname" jdbcType="VARCHAR" property="sName" />
+    <result column="sdescription" jdbcType="VARCHAR" property="sDescription" />
+    <result column="saddress" jdbcType="VARCHAR" property="sAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sid, sname, sdescription, saddress
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from school
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from school
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shangguan.Mybatis.beans.School">
+    <!--@mbg.generated-->
+    insert into school ( sname, sdescription,
+      saddress)
+    values ( #{sName,jdbcType=VARCHAR}, #{sDescription,jdbcType=VARCHAR},
+      #{sAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shangguan.Mybatis.beans.School">
+    <!--@mbg.generated-->
+    insert into school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="sdescription != null">
+        sdescription,
+      </if>
+      <if test="saddress != null">
+        saddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sdescription != null">
+        #{sdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="saddress != null">
+        #{saddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shangguan.Mybatis.beans.School">
+    <!--@mbg.generated-->
+    update school
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sdescription != null">
+        sdescription = #{sdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="saddress != null">
+        saddress = #{saddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shangguan.Mybatis.beans.School">
+    <!--@mbg.generated-->
+    update school
+    set sname = #{sname,jdbcType=VARCHAR},
+      sdescription = #{sdescription,jdbcType=VARCHAR},
+      saddress = #{saddress,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>
